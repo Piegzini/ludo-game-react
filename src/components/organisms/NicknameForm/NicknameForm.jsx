@@ -5,8 +5,12 @@ import {apiAddress} from '../../../helpers/constants'
 import PropTypes from 'prop-types';
 
 function NicknameForm({actionAfterSuccess}) {
+    const [isButtonActive, setIsButtonActive] = useState(true)
     const [nickname, setNickname] = useState('')
     const registerPlayer = async () => {
+        if (!isButtonActive) return
+
+        setIsButtonActive(false)
         const nickValidator = nickname.split(' ').join('');
         if (!nickValidator) {
             return
@@ -14,11 +18,12 @@ function NicknameForm({actionAfterSuccess}) {
 
 
         try {
-            const response = await axios.post(`${apiAddress}/player`, {});
+            const response = await axios.post(`${apiAddress}/player`, {nick: nickname});
             actionAfterSuccess()
         } catch (error) {
             console.log(error);
         }
+        setIsButtonActive(true)
 
     }
     return (

@@ -1,5 +1,5 @@
 import {Wrapper} from "./Welcome.styles";
-import NicknameForm from "../organisms/NicknameForm/NicknameForm";
+import NicknameForm from "../../organisms/NicknameForm/NicknameForm";
 
 
 function Welcome() {
