@@ -1,20 +1,18 @@
 import Switch from "../../molecules/Switch/Switch";
 import PlayersBar from "../../organisms/PlayersBar/PlayersBar";
 import {Container, Wrapper} from "./Lobby.styles";
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {useEffect} from "react";
+
+import {socket} from "../../../helpers/constants";
+import {setPlayers} from "../../../store/actions";
+import {useDispatch} from "react-redux";
 
 
 function Lobby() {
-    let navigate = useNavigate()
-    const user = useSelector(state => state.user)
+    const dispath = useDispatch()
 
-    useEffect(() => {
-        if (user.id) return
 
-        navigate("/", {replace: true});
-
+    socket.on("UPDATE_LOBBY", (players) => {
+        dispath(setPlayers(players))
     })
 
     return (
