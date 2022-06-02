@@ -12,6 +12,7 @@ function Lobby() {
 
 
     socket.on("UPDATE_LOBBY", (players) => {
+        console.log('hej')
         dispath(setPlayers(players))
     })
 
