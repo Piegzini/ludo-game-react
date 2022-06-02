@@ -2,11 +2,18 @@ import {FormHelperText, From, Label, NicknameInput, SubmitButton} from "./Nickna
 import {useState} from "react";
 import axios from "axios";
 import {apiAddress} from '../../../helpers/constants'
-import PropTypes from 'prop-types';
+import {useDispatch} from "react-redux";
+import {setUser} from "../../../store/actions";
+import {useNavigate} from "react-router-dom";
 
-function NicknameForm({actionAfterSuccess}) {
+function NicknameForm() {
+    let navigate = useNavigate()
+    //store
+    const dispath = useDispatch()
+    //state
     const [isButtonActive, setIsButtonActive] = useState(true)
     const [nickname, setNickname] = useState('')
+
     const registerPlayer = async () => {
         if (!isButtonActive) return
 
@@ -18,8 +25,10 @@ function NicknameForm({actionAfterSuccess}) {
 
 
         try {
-            const response = await axios.post(`${apiAddress}/player`, {nick: nickname});
-            actionAfterSuccess()
+            const {data} = await axios.post(`${apiAddress}/player`, {nick: nickname});
+            dispath(setUser(data))
+            navigate('/lobby')
+
         } catch (error) {
             console.log(error);
         }
@@ -37,9 +46,5 @@ function NicknameForm({actionAfterSuccess}) {
     )
 }
 
-NicknameForm.propTypes = {
-    actionAfterSuccess: PropTypes.func.isRequired
-
-}
 
 export default NicknameForm
