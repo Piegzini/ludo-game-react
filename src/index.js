@@ -5,6 +5,7 @@ import GlobalCSS from './assets/global.styles'
 import {createStore} from "redux";
 import rootReducer from "./store/reducers";
 import {Provider} from "react-redux"
+import {SocketProvider} from "./context/socket";
 
 
 const store = createStore(
@@ -15,8 +16,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <GlobalCSS/>
-            <App/>
+            <SocketProvider>
+                <GlobalCSS/>
+                <App/>
+            </SocketProvider>
         </Provider>
 
     </React.StrictMode>

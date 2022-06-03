@@ -1,12 +1,14 @@
 import {FormHelperText, From, Label, NicknameInput, SubmitButton} from "./NicknameForm.styles";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {useDispatch} from "react-redux";
 import {setPlayers, setUser} from "../../../store/actions";
 import {useNavigate} from "react-router-dom";
-import {socket} from "../../../helpers/constants";
+import {SocketContext} from "../../../context/socket";
 
 
 function NicknameForm() {
+    const socket = useContext(SocketContext)
+
     let navigate = useNavigate()
     //store
     const dispath = useDispatch()
@@ -31,9 +33,7 @@ function NicknameForm() {
         }
 
         socket.emit('CREATE_PLAYER', {nick})
-
         setIsButtonActive(true)
-
     }
     return (
         <From>

@@ -2,19 +2,23 @@ import Switch from "../../molecules/Switch/Switch";
 import PlayersBar from "../../organisms/PlayersBar/PlayersBar";
 import {Container, Wrapper} from "./Lobby.styles";
 
-import {socket} from "../../../helpers/constants";
 import {setPlayers} from "../../../store/actions";
-import {useDispatch} from "react-redux";
+import {useDispatch,} from "react-redux";
+import {useCallback, useContext} from "react";
+import {SocketContext} from "../../../context/socket";
 
 
 function Lobby() {
-    const dispath = useDispatch()
 
+
+    const socket = useContext(SocketContext)
+    const dispatch = useDispatch()
 
     socket.on("UPDATE_LOBBY", (players) => {
-        console.log('hej')
-        dispath(setPlayers(players))
+        console.log(players)
+        dispatch(setPlayers(players))
     })
+
 
     return (
         <Container>

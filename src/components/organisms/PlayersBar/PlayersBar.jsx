@@ -1,14 +1,16 @@
-import {Wrapper} from "./PlayersBar.styles";
+import {Content, Nick, Status, Wrapper} from "./PlayersBar.styles";
 import {useSelector} from "react-redux";
-import PlayerCard from "../../molecules/PlayerCard/PlayerCard";
 
 function PlayersBar() {
     const players = useSelector(state => state.players)
     return (
         <Wrapper>
-            {players.map(({nick, color, isReady, _id}) => <PlayerCard nick={nick} color={color}
-                                                                      isReady={isReady}
-                                                                      key={_id}/>)}
+            {players.map(({nick, color, isReady, _id}) =>
+                <Content color={color} key={_id}>
+                    <Nick>{nick}</Nick>
+                    <Status>{isReady ? 'Gotowy' : 'Nie gotowy'}</Status>
+                </Content>
+            )}
         </Wrapper>
     )
 }

@@ -1,18 +1,31 @@
 import {FormHelperText, Slider, SwitchBox, SwitchInput, Wrapper} from "./Switch.styles";
-import {useEffect, useState} from "react";
-import {socket} from "../../../helpers/constants";
+import {useContext, useEffect, useState} from "react";
+import {SocketContext} from "../../../context/socket";
+import {useDispatch} from "react-redux";
+
 
 function Switch() {
+    const socket = useContext(SocketContext)
+
     const [isReady, setIsReady] = useState(false)
-    useEffect(() => {
-        socket.emit('CHANGE_STATUS', {isReady})
-    }, [isReady])
+    const [isSetting, setIsSetting] = useState(false)
+
+    const handleSliderChange = () => {
+        if (isSetting) return
+
+        setIsSetting(true)
+        socket.emit('CHANGE_STATUS', {isReady: !isReady})
+        setIsReady(state => !state)
+        //preventing from clicking
+        setTimeout(() => setIsSetting(false), 400)
+    }
+
     return (
         <Wrapper>
             <FormHelperText>Potwierdź swoją gotowość</FormHelperText>
             <SwitchBox>
-                <SwitchInput id="status-input" type="checkbox" value={isReady}
-                             onChange={() => setIsReady(state => !state)}/>
+                <SwitchInput id="status-input" type="checkbox" value={isReady} disabled={isSetting}
+                             onChange={handleSliderChange}/>
                 <Slider className="slider"></Slider>
             </SwitchBox>
         </Wrapper>
