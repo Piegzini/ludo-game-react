@@ -1,7 +1,6 @@
 import {FormHelperText, Slider, SwitchBox, SwitchInput, Wrapper} from "./Switch.styles";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {SocketContext} from "../../../context/socket";
-import {useDispatch} from "react-redux";
 
 
 function Switch() {

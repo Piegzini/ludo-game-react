@@ -8,6 +8,7 @@ import {
     Navigate
 } from "react-router-dom";
 import {useSelector} from "react-redux";
+import Board from "./components/templates/Board/Board";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                         <Route index element={<Welcome/>}/>
                         <Route path="lobby"
                                element={user.id ? <Lobby/> : <Navigate replace to="/"/>}/>
+                        <Route path="game" element={<Board/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>
