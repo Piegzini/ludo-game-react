@@ -15,6 +15,7 @@ const Ludo = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: white;
+  position: relative;
 `
 const VerticalPools = styled.div`
   display: flex;
@@ -41,6 +42,25 @@ const HorizontalPools = styled.div`
 
 const Row = styled.div`
   display: flex;
+`
+
+const PawnWrapper = styled.div`
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 150px;
+  left: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Pawn = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  border-radius: 20px
+
 `
 
 
@@ -102,7 +122,9 @@ function Board() {
 
                 </VerticalPools>
                 <Station color="green"></Station>
+                <PawnWrapper> <Pawn/></PawnWrapper>
             </Ludo>
+
         </Container>
 
     )
