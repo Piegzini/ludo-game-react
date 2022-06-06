@@ -26,4 +26,23 @@ const Pool = styled.div`
 
 `
 
+const PawnWrapper = styled.div`
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Pawn = styled.div`
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  border-radius: 20px
+
+`
+
 export {Container, Wrapper, Pool}
