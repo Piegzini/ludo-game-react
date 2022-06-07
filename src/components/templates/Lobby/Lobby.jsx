@@ -2,14 +2,15 @@ import Switch from "../../molecules/Switch/Switch";
 import PlayersBar from "../../organisms/PlayersBar/PlayersBar";
 import {Container, Wrapper} from "./Lobby.styles";
 
-import {setPlayers} from "../../../store/actions";
+import {setPlayers, updateGame} from "../../../store/actions";
 import {useDispatch,} from "react-redux";
-import {useCallback, useContext} from "react";
+import {useContext} from "react";
 import {SocketContext} from "../../../context/socket";
+import {useNavigate} from "react-router-dom";
 
 
 function Lobby() {
-
+    let navigate = useNavigate()
 
     const socket = useContext(SocketContext)
     const dispatch = useDispatch()
@@ -17,6 +18,14 @@ function Lobby() {
     socket.on("UPDATE_LOBBY", (players) => {
         console.log(players)
         dispatch(setPlayers(players))
+    })
+
+    socket.on("START_GAME", (game) => {
+        console.log(game)
+        socket.off("UPDATE_LOBBY")
+        dispatch(updateGame(game))
+        navigate('/game')
+
     })
 
 
