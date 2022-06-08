@@ -11,4 +11,8 @@ export const updateGame = (game) => {
 
 }
 
+export const updateAvailableMoves = (moves) => {
+    return {type: "UPDATE_AVAILABLE_MOVES", payload: moves}
+
+}
 

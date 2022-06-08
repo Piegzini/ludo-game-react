@@ -13,6 +13,7 @@ import Board from "./components/templates/Board/Board";
 
 function App() {
     const user = useSelector(state => state.user)
+    const game = useSelector(state => state.game)
 
 
     return (
@@ -23,7 +24,8 @@ function App() {
                         <Route index element={<Welcome/>}/>
                         <Route path="lobby"
                                element={user.id ? <Lobby/> : <Navigate replace to="/"/>}/>
-                        <Route path="game" element={<Board/>}/>
+                        <Route path="game"
+                               element={game.id ? <Board/> : <Navigate replace to="/"/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>

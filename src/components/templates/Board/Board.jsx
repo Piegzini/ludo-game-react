@@ -13,7 +13,9 @@ function Board() {
     const dispatch = useDispatch()
     const socket = useContext(SocketContext)
     const game = useSelector(state => state.game)
-    socket.on("ROLLED_NUMBER", (game) => {
+
+    socket.on("UPDATE_GAME", (game) => {
+        console.log(game)
         dispatch(updateGame(game))
     })
 

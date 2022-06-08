@@ -4,26 +4,32 @@ import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 
 
-const pawns = ['first', 'second', 'third', 'fourth',]
-
 function Station({color}) {
-    const players = useSelector(state => state.players)
+
+    const game = useSelector(state => state.game)
 
     const [arePawnsOnBoard, setArePawnsOnBoard] = useState(false)
+    const [player, setPlayer] = useState()
     useEffect(() => {
+            const {players} = game
             const playerWithThisColorInGame = players.some(player => player.color === color)
+
+            const playerWithThisColor = players.find(player => player.color === color)
+
             setArePawnsOnBoard(playerWithThisColorInGame)
-        }, []
+            setPlayer(playerWithThisColor)
+        }, [game]
     )
     return (
         <Container color={color}>
             <Wrapper>
                 {
-                    pawns.map(id =>
-                        <Pool color={color}>
-                            {arePawnsOnBoard ? <Pawn absolute={false} color={color} pawnId={id}
-                                                     key={id}></Pawn> : null}
-                        </Pool>)
+                    player ?
+                        player.pawns.map(({id, position}) =>
+                            <Pool color={color}>
+                                {arePawnsOnBoard ? <Pawn position={position} color={color} id={id}
+                                                         key={id}></Pawn> : null}
+                            </Pool>) : null
                 }
 
             </Wrapper>
