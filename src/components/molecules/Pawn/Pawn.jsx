@@ -9,7 +9,6 @@ function Pawn({id, color, position}) {
     const socket = useContext(SocketContext)
 
 
-    console.log(position)
     const user = useSelector(state => state.user)
     const game = useSelector(state => state.game)
     const [pawnId, setPawnId] = useState(id)

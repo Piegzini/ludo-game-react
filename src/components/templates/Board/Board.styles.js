@@ -25,6 +25,7 @@ const Pool = styled.div`
   font-size: 30px;
   text-align: center;
   border-collapse: collapse;
+  background-color: ${(props) => props.color};
 `
 
 export {Pool, Container, Ludo}

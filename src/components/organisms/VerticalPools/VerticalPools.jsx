@@ -1,22 +1,35 @@
 import {Pool} from "../../templates/Board/Board.styles";
-import styled from "styled-components";
 
 
-const numberOfRows = new Array(3).fill(0)
-const numberOfPools = new Array(6).fill(0)
+const numberOfPools = [0, 1, 2, 3, 4, 5,]
 
-const Box = styled.div`
-  display: flex
-`
 
-function VerticalPools() {
+function VerticalPools({color}) {
     return (
-        <Box>
-            {numberOfRows.map(() => {
-                    return (<div> {numberOfPools.map(() => <Pool/>)}</div>)
-                }
-            )}
-        </Box>
+        <div style={{display: 'flex', flexDirection: color === 'gold' ? 'row-reverse' : "row"}}>
+            <div style={{
+                display: 'flex',
+                flexDirection: color === 'gold' ? 'column-reverse' : "column"
+            }}>
+                {numberOfPools.map((row) => <Pool color={"white"}/>)}
+            </div>
+
+            <div style={{
+                display: 'flex',
+                flexDirection: color === 'gold' ? 'column-reverse' : "column"
+            }}>
+                {numberOfPools.map((row) => <Pool color={row !== 0 ? color : 'white'}/>)}
+            </div>
+
+            <div style={{
+                display: 'flex',
+                flexDirection: color === 'gold' ? 'column-reverse' : "column"
+            }}>
+                {numberOfPools.map((row) => <Pool color={row === 0 ? color : 'white'}/>)}
+            </div>
+
+
+        </div>
 
     )
 }

@@ -15,7 +15,6 @@ function Board() {
     const game = useSelector(state => state.game)
 
     socket.on("UPDATE_GAME", (game) => {
-        console.log(game)
         dispatch(updateGame(game))
     })
 
@@ -29,11 +28,11 @@ function Board() {
             <h3 style={{color: 'white'}}>{game.rolledNumber}</h3>
             <Ludo>
                 <Station color='royalBlue'/>
-                <VerticalPools/>
+                <VerticalPools color="red"/>
                 <Station color='red'/>
                 <HorizontalPools/>
                 <Station color="gold"></Station>
-                <VerticalPools/>
+                <VerticalPools color="gold"/>
                 <Station color="green"></Station>
             </Ludo>
 
