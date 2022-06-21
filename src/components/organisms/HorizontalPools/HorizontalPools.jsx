@@ -12,7 +12,7 @@ function HorizontalPools() {
                 {numberOfRows.map((row) => {
                         return (
                             <div style={{display: 'flex'}}> {numberOfPools.map((col) => <Pool
-                                color={(row === 1 && col !== 0) || (row === 0 && col === 0) ? "royalBlue" : 'white'}/>)}</div>)
+                                color={(row === 1 && col !== 0) || (row === 0 && col === 1) ? "royalBlue" : 'white'}/>)}</div>)
                     }
                 )}
             </div>
@@ -20,7 +20,7 @@ function HorizontalPools() {
                 {numberOfRows.map((row) => {
                         return (
                             <div style={{display: 'flex'}}> {numberOfPools.map((col) => <Pool
-                                color={(row === 1 && col !== 5) || (row === 2 && col === 5) ? "green" : 'white'}/>)}</div>)
+                                color={(row === 1 && col !== 5) || (row === 2 && col === 4) ? "green" : 'white'}/>)}</div>)
                     }
                 )}
             </div>

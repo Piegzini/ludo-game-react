@@ -41,13 +41,13 @@ function Board() {
         <Container>
 
             <Ludo>
-                <Station color='royalBlue'/>
-                <VerticalPools color="red"/>
-                <Station color='red'/>
-                <HorizontalPools/>
-                <Station color="gold"></Station>
-                <VerticalPools color="gold"/>
-                <Station color="green"></Station>
+                {/*<Station color='royalBlue'/>*/}
+                {/*<VerticalPools color="red"/>*/}
+                {/*<Station color='red'/>*/}
+                {/*<HorizontalPools/>*/}
+                {/*<Station color="gold"></Station>*/}
+                {/*<VerticalPools color="gold"/>*/}
+                {/*<Station color="green"></Station>*/}
             </Ludo>
             <Panel handleRoll={handleRollNumber} time={turnTime} rolledNumber={game.rolledNumber}/>
 

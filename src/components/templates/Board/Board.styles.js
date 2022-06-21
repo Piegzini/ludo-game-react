@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import board from "../../../assets/Untitled.png"
 
 const Container = styled.div`
   display: flex;
@@ -16,6 +17,9 @@ const Ludo = styled.div`
   justify-content: space-between;
   position: relative;
   box-shadow: 0px 0px 16px 1px rgba(66, 68, 90, 1);
+  background-image: url(${board});
+  background-size: contain;
+  background-repeat: no-repeat;
 `
 
 const Pool = styled.div`

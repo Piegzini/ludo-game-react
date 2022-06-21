@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   width: 400px;
   height: 650px;
   margin: 0 50px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   box-shadow: 0px 0px 32px -13px rgba(66, 68, 90, 1);
 `
@@ -28,6 +28,7 @@ const Timer = styled.div`
 const Dice = styled.div`
   width: 90px;
   height: 90px;
+  box-shadow: 0 0 49px -22px rgba(66, 68, 90, 1);
   background-image: url(${(props) => {
     switch (props.number) {
       case 1:

@@ -25,7 +25,7 @@ function VerticalPools({color}) {
                 display: 'flex',
                 flexDirection: color === 'gold' ? 'column-reverse' : "column"
             }}>
-                {numberOfPools.map((row) => <Pool color={row === 0 ? color : 'white'}/>)}
+                {numberOfPools.map((row) => <Pool color={row === 1 ? color : 'white'}/>)}
             </div>
 
 

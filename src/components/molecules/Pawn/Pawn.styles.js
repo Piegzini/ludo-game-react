@@ -29,10 +29,12 @@ const Content = styled.div`
   border-radius: 40px;
   border: 2px solid #eee;
 
+
   &.animation {
     animation-name: ${breatheAnimation};
     animation-duration: 1s;
     animation-iteration-count: infinite;
+    cursor: pointer;
   }
 `
 
