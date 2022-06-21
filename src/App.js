@@ -1,6 +1,6 @@
 import Welcome from "./components/templates/Welcome/Welcome";
 import Lobby from "./components/templates/Lobby/Lobby";
-
+import background from './assets/background2.png'
 import {
     BrowserRouter,
     Routes,
@@ -17,7 +17,8 @@ function App() {
 
 
     return (
-        <div className="App">
+        <div className="App"
+             style={{backgroundImage: `url(${background})`, backgroundSize: 'cover'}}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/">

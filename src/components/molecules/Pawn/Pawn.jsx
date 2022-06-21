@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {useContext} from "react";
 import {SocketContext} from "../../../context/socket";
+import stepSound from "../../../assets/assets_audio_step.mp3"
 
 
 function Pawn({id, color, position}) {
@@ -29,13 +30,16 @@ function Pawn({id, color, position}) {
 
     const handleClick = () => {
         if (user.id !== playerWithMove) return
-
+        const audio = new Audio(stepSound)
+        audio.play()
         socket.emit("MOVE", {pawnId})
     }
 
     return (
         <PawnWrapper position={position}>
-            <Content color={color} onClick={handleClick} className={isAnimated ? 'animation' : ''}/>
+            <Content color={color} onClick={isAnimated ? handleClick : () => {
+            }}
+                     className={isAnimated ? 'animation' : ''}/>
         </PawnWrapper>
     )
 }

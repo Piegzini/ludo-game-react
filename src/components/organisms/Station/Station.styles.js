@@ -10,7 +10,7 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.4);
   width: 200px;
   height: 200px;
   display: flex;

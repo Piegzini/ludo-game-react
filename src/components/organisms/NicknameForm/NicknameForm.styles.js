@@ -5,8 +5,12 @@ const From = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 360px;
-  height: 200px;
+  min-width: 380px;
+  height: 450px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.33);
+  filter: alpha(opacity=90);
+
 `
 
 const Label = styled.label`
@@ -35,19 +39,30 @@ const NicknameInput = styled.input`
   font-size: 20px;
   color: #ffffff;
   text-align: center;
+  width: 50%;
+  transition: all 0.3s;
+
+  &:focus {
+    width: 60%;
+  }
+
 `
 
 const SubmitButton = styled.button`
-  width: 150px;
+  width: 120px;
   height: 35px;
   outline: none;
-  border: 0;
-  background-color: #2f3542;
-  border: 1px #ffffff solid;
+  background-color: #32CD32;
+  border: none;
   color: #ffffff;
   font-size: 17px;
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: #1eb71e;
+  }
 `
 
 export {SubmitButton, From, Label, FormHelperText, NicknameInput}

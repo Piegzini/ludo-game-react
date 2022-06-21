@@ -13,11 +13,11 @@ const PawnWrapper = styled.div`
 
 const breatheAnimation = keyframes`
   0% {
-    filter: opacity(100%)
+    filter: opacity(100%);
   }
 
   50% {
-    filter: opacity(25%)
+    filter: opacity(25%);
   }
 `
 

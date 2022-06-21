@@ -6,7 +6,8 @@ import {useState, useContext, useEffect, useCallback} from "react";
 import {SocketContext} from "../../../context/socket";
 import {useDispatch, useSelector} from "react-redux";
 import {updateGame} from "../../../store/actions";
-
+import Panel from "../../organisms/Panel/Panel";
+import diceSound from "../../../assets/assets_audio_dice.mp3"
 
 function Board() {
     const [turnTime, setTurnTime] = useState('')
@@ -32,13 +33,13 @@ function Board() {
 
 
     const handleRollNumber = () => {
+        const audio = new Audio(diceSound)
+        audio.play()
         socket.emit("ROLL_NUMBER")
     }
     return (
         <Container>
-            <p style={{color: 'white'}}>Turn time: {turnTime}</p>
-            <button onClick={handleRollNumber}> Losuj</button>
-            <h3 style={{color: 'white'}}>{game.rolledNumber}</h3>
+
             <Ludo>
                 <Station color='royalBlue'/>
                 <VerticalPools color="red"/>
@@ -48,6 +49,7 @@ function Board() {
                 <VerticalPools color="gold"/>
                 <Station color="green"></Station>
             </Ludo>
+            <Panel handleRoll={handleRollNumber} time={turnTime} rolledNumber={game.rolledNumber}/>
 
         </Container>
 

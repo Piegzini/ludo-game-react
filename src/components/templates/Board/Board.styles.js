@@ -5,7 +5,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgb(32, 34, 56);
+  background: transparent;
+  backdrop-filter: blur(5px);
 `
 const Ludo = styled.div`
   width: 750px;
@@ -13,8 +14,8 @@ const Ludo = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: white;
   position: relative;
+  box-shadow: 0px 0px 16px 1px rgba(66, 68, 90, 1);
 `
 
 const Pool = styled.div`
@@ -25,7 +26,7 @@ const Pool = styled.div`
   font-size: 30px;
   text-align: center;
   border-collapse: collapse;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.color !== 'white' ? props.color : 'rgba(0, 0, 0, 0.30)'};
 `
 
 export {Pool, Container, Ludo}

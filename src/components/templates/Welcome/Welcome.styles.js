@@ -6,10 +6,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #2f3542;
   width: 100vw;
   height: 100vh;
-
+  background-color: transparent;
+  backdrop-filter: blur(8px)
 `
 
 export {Wrapper}

@@ -37,11 +37,11 @@ function NicknameForm() {
     }
     return (
         <From>
-            <Label htmlFor="nick">Podaj nick</Label>
-            <FormHelperText>Nick powinien mieć max 12 znaków</FormHelperText>
+            <Label htmlFor="nick">Pass your nick</Label>
+            <FormHelperText>Nick should have maximum 12 characters</FormHelperText>
             <NicknameInput type="text" name="nick" required="required" autoComplete="off"
                            onChange={(e) => setNick(e.target.value)}/>
-            <SubmitButton onClick={registerPlayer}> GRAJ! </SubmitButton>
+            <SubmitButton onClick={registerPlayer}> Start </SubmitButton>
         </From>
     )
 }

@@ -32,8 +32,9 @@ function Lobby() {
     return (
         <Container>
             <Wrapper>
-                <Switch/>
                 <PlayersBar/>
+                <Switch/>
+
             </Wrapper>
         </Container>
 
