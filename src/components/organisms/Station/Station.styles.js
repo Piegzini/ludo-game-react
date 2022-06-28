@@ -6,11 +6,9 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(props) => props.color};
 `
 
 const Wrapper = styled.div`
-  background-color: rgba(255, 255, 255, 0.4);
   width: 200px;
   height: 200px;
   display: flex;
@@ -27,7 +25,6 @@ const Pool = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `
 
 

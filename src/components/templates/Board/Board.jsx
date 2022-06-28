@@ -1,8 +1,6 @@
 import Station from "../../organisms/Station/Station";
-import HorizontalPools from "../../organisms/HorizontalPools/HorizontalPools";
-import VerticalPools from "../../organisms/VerticalPools/VerticalPools";
 import {Container, Ludo} from "./Board.styles";
-import {useState, useContext, useEffect, useCallback} from "react";
+import {useState, useContext, useEffect} from "react";
 import {SocketContext} from "../../../context/socket";
 import {useDispatch, useSelector} from "react-redux";
 import {updateGame} from "../../../store/actions";
@@ -16,6 +14,7 @@ function Board() {
     const game = useSelector(state => state.game)
 
     socket.on("UPDATE_GAME", (_game) => {
+        console.log(_game.newTurn)
         if (_game.newTurn) {
             setTurnTime(_game.turnTime)
         }
@@ -27,6 +26,7 @@ function Board() {
     }
 
     useEffect(() => {
+        setTurnTime(game.turnTime)
         const timer = setInterval(updateTimer, 1000)
         return () => clearInterval(timer);
     }, [])
@@ -41,13 +41,10 @@ function Board() {
         <Container>
 
             <Ludo>
-                {/*<Station color='royalBlue'/>*/}
-                {/*<VerticalPools color="red"/>*/}
-                {/*<Station color='red'/>*/}
-                {/*<HorizontalPools/>*/}
-                {/*<Station color="gold"></Station>*/}
-                {/*<VerticalPools color="gold"/>*/}
-                {/*<Station color="green"></Station>*/}
+                <Station color='royalBlue'/>
+                <Station color='red'/>
+                <Station color="gold"/>
+                <Station color="green"/>
             </Ludo>
             <Panel handleRoll={handleRollNumber} time={turnTime} rolledNumber={game.rolledNumber}/>
 

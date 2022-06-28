@@ -21,15 +21,15 @@ function Station({color}) {
         }, [game]
     )
     return (
-        <Container color={color}>
+        <Container>
             <Wrapper>
                 {
-                    player ?
-                        player.pawns.map(({id, position}) =>
-                            <Pool color={color}>
-                                {arePawnsOnBoard ? <Pawn position={position} color={color} id={id}
-                                                         key={id}></Pawn> : null}
-                            </Pool>) : null
+                    player ? player.pawns.map(({id, position}) =>
+                        <Pool color={color} key={id}>
+                            {
+                                arePawnsOnBoard ? <Pawn position={position} color={color} id={id}
+                                                        key={id}></Pawn> : null}
+                        </Pool>) : null
                 }
 
             </Wrapper>

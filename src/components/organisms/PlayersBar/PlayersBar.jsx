@@ -13,7 +13,6 @@ function PlayersBar() {
     const [thisTurnColor, setThisTurnColor] = useState('')
 
     useEffect(() => {
-        console.log(game.isDuring)
         if (!game.isDuring) return
         const {color} = players.find((player) => player._id?.valueOf() === playerWithMove?.valueOf());
         setThisTurnColor(color)

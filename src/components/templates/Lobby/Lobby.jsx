@@ -16,12 +16,10 @@ function Lobby() {
     const dispatch = useDispatch()
 
     socket.on("UPDATE_LOBBY", (players) => {
-        console.log(players)
         dispatch(setPlayers(players))
     })
 
     socket.on("START_GAME", (game) => {
-        console.log(game)
         socket.off("UPDATE_LOBBY")
         dispatch(updateGame(game))
         navigate('/game')

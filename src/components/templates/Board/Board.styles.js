@@ -10,11 +10,13 @@ const Container = styled.div`
   backdrop-filter: blur(5px);
 `
 const Ludo = styled.div`
+  min-width: 750px;
   width: 750px;
   height: 750px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 150px;
   position: relative;
   box-shadow: 0px 0px 16px 1px rgba(66, 68, 90, 1);
   background-image: url(${board});
