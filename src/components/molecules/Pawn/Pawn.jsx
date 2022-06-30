@@ -24,7 +24,7 @@ function Pawn({id, color, position}) {
         const inAvailableMoves = game.availableMoves?.some(pawn => pawn.id === pawnId)
         const thisPlayerPawns = user.color === color
 
-        
+
         setIsAnimated(inAvailableMoves && thisPlayerPawns)
     }, [game.availableMoves])
 
@@ -39,7 +39,7 @@ function Pawn({id, color, position}) {
         <PawnWrapper position={position}>
             <Content color={color} onClick={isAnimated ? handleClick : () => {
             }}
-                     className={isAnimated ? 'animation' : ''}/>
+                     className={[isAnimated ? 'animation' : '', 'pawn']}/>
         </PawnWrapper>
     )
 }

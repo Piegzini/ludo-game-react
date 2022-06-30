@@ -25,7 +25,7 @@ function PlayersBar() {
                 <Content key={_id} className={thisTurnColor === color ? 'animation' : ''}>
                     <Pawn color={color}/>
                     <Nick>{nick}</Nick>
-                    <Status checked={isReady}/>
+                    {!game.isDuring ? <Status checked={isReady}/> : null}
                 </Content>
             )}
         </Wrapper>

@@ -9,6 +9,7 @@ const PawnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
 `
 
 const breatheAnimation = keyframes`
@@ -27,7 +28,8 @@ const Content = styled.div`
   height: 40px;
   background-color: ${(props) => props.color};
   border-radius: 40px;
-  border: 2px solid #eee;
+  border: 2px solid #555;
+  //filter: grayscale(20%);
 
 
   &.animation {

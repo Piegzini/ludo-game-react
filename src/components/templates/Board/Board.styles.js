@@ -22,6 +22,8 @@ const Ludo = styled.div`
   background-image: url(${board});
   background-size: contain;
   background-repeat: no-repeat;
+
+ 
 `
 
 const Pool = styled.div`
