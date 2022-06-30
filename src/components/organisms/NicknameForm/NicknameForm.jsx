@@ -1,26 +1,25 @@
 import {FormHelperText, From, Label, NicknameInput, SubmitButton} from "./NicknameForm.styles";
-import {useContext, useState} from "react";
-import {useDispatch} from "react-redux";
-import {setPlayers, setUser} from "../../../store/actions";
+import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {SocketContext} from "../../../context/socket";
+import useSocket from "../../../context/useSocket";
+import players from "../../../store/reducers/players";
 
 
 function NicknameForm() {
-    const socket = useContext(SocketContext)
-
+    const playersCount = useSelector(state => state.players.length)
+    const {emitJoinLobby} = useSocket()
     let navigate = useNavigate()
-    //store
-    const dispath = useDispatch()
-    //state
+
     const [isButtonActive, setIsButtonActive] = useState(true)
     const [nick, setNick] = useState('')
 
-    socket.on('JOIN_LOBBY', ({user, players}) => {
-        dispath(setUser(user))
-        dispath(setPlayers(players))
-        navigate('/lobby')
-    })
+
+    useEffect(() => {
+            if (playersCount <= 0) return
+            navigate('/lobby')
+        }, [playersCount]
+    )
 
     const registerPlayer = () => {
         if (!isButtonActive) return
@@ -28,11 +27,10 @@ function NicknameForm() {
         setIsButtonActive(false)
         const nickValidator = nick.split(' ').join('');
 
-        if (!nickValidator) {
-            return
-        }
+        if (!nickValidator) return
 
-        socket.emit('CREATE_PLAYER', {nick})
+
+        emitJoinLobby(nick)
         setIsButtonActive(true)
     }
     return (

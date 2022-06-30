@@ -1,20 +1,22 @@
 import {FormHelperText, Slider, SwitchBox, SwitchInput, Wrapper} from "./Switch.styles";
 import {useContext, useState} from "react";
 import {SocketContext} from "../../../context/socket";
+import useSocket from "../../../context/useSocket";
 
 
 function Switch() {
-    const socket = useContext(SocketContext)
 
+    const {emitChangeStatus} = useSocket()
     const [isReady, setIsReady] = useState(false)
     const [isSetting, setIsSetting] = useState(false)
 
     const handleSliderChange = () => {
         if (isSetting) return
 
+        emitChangeStatus(isReady)
         setIsSetting(true)
-        socket.emit('CHANGE_STATUS', {isReady: !isReady})
         setIsReady(state => !state)
+
         //preventing from clicking
         setTimeout(() => setIsSetting(false), 400)
     }

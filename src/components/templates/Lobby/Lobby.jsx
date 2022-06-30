@@ -1,42 +1,26 @@
 import Switch from "../../molecules/Switch/Switch";
 import PlayersBar from "../../organisms/PlayersBar/PlayersBar";
 import {Container, Wrapper} from "./Lobby.styles";
-
-import {setPlayers, updateGame} from "../../../store/actions";
-import {useDispatch,} from "react-redux";
-import {useContext} from "react";
-import {SocketContext} from "../../../context/socket";
+import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 
 function Lobby() {
+    const inGame = useSelector(state => state.game.isDuring)
     let navigate = useNavigate()
 
-    const socket = useContext(SocketContext)
-    const dispatch = useDispatch()
-
-    socket.on("UPDATE_LOBBY", (players) => {
-        dispatch(setPlayers(players))
-    })
-
-    socket.on("START_GAME", (game) => {
-        socket.off("UPDATE_LOBBY")
-        dispatch(updateGame(game))
+    useEffect(() => {
+        if (!inGame) return
         navigate('/game')
-
-    })
-
-
+    }, [inGame])
     return (
         <Container>
             <Wrapper>
                 <PlayersBar/>
                 <Switch/>
-
             </Wrapper>
         </Container>
-
-
     )
 }
 

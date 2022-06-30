@@ -1,4 +1,4 @@
-const gameReducer = (state = [], action) => {
+const gameReducer = (state = {isDuring: false}, action) => {
     switch (action.type) {
         case "UPDATE_GAME":
             return action.payload

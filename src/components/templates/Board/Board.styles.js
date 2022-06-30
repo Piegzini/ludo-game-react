@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import board from "../../../assets/Untitled.png"
+import board from "../../../assets/backgrounds/board.png"
 
 const Container = styled.div`
   display: flex;

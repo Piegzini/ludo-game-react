@@ -1,42 +1,38 @@
 import Station from "../../organisms/Station/Station";
 import {Container, Ludo} from "./Board.styles";
-import {useState, useContext, useEffect} from "react";
-import {SocketContext} from "../../../context/socket";
-import {useDispatch, useSelector} from "react-redux";
-import {updateGame} from "../../../store/actions";
+import {useState, useEffect} from "react";
+import {useSelector} from "react-redux";
 import Panel from "../../organisms/Panel/Panel";
-import diceSound from "../../../assets/assets_audio_dice.mp3"
+import diceSound from "../../../assets/audio/assets_audio_dice.mp3"
+import useSocket from "../../../context/useSocket";
 
 function Board() {
     const [turnTime, setTurnTime] = useState('')
-    const dispatch = useDispatch()
-    const socket = useContext(SocketContext)
     const game = useSelector(state => state.game)
-
-    socket.on("UPDATE_GAME", (_game) => {
-        console.log(_game.newTurn)
-        if (_game.newTurn) {
-            setTurnTime(_game.turnTime)
-        }
-        dispatch(updateGame(_game))
-    })
+    const {emitRoll} = useSocket()
 
     const updateTimer = () => {
         setTurnTime(prevState => prevState <= 0 ? prevState : prevState - 1)
     }
 
+    const handleRollNumber = () => {
+        const audio = new Audio(diceSound)
+        audio.play()
+        emitRoll()
+    }
+
     useEffect(() => {
-        setTurnTime(game.turnTime)
         const timer = setInterval(updateTimer, 1000)
         return () => clearInterval(timer);
     }, [])
 
+    useEffect(() => {
+        if (game.newTurn) {
+            setTurnTime(game.turnTime)
+        }
+    }, [game])
 
-    const handleRollNumber = () => {
-        const audio = new Audio(diceSound)
-        audio.play()
-        socket.emit("ROLL_NUMBER")
-    }
+
     return (
         <Container>
 

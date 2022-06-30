@@ -1,5 +1,5 @@
 import styled, {keyframes} from "styled-components";
-import checked from '../../../assets/checked.png'
+import checked from '../../../assets/others/checked.png'
 
 const Wrapper = styled.div`
   height: 60%;

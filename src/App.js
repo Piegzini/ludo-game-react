@@ -1,6 +1,6 @@
 import Welcome from "./components/templates/Welcome/Welcome";
 import Lobby from "./components/templates/Lobby/Lobby";
-import background from './assets/background2.png'
+import background from './assets/backgrounds/background.png'
 import {
     BrowserRouter,
     Routes,
@@ -9,12 +9,13 @@ import {
 } from "react-router-dom";
 import {useSelector} from "react-redux";
 import Board from "./components/templates/Board/Board";
+import useSocket from "./context/useSocket";
 
 
 function App() {
     const user = useSelector(state => state.user)
     const game = useSelector(state => state.game)
-
+    useSocket()
 
     return (
         <div className="App"

@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import dice0 from "../../../assets/dice0.png";
-import dice1 from "../../../assets/dice1.png";
-import dice2 from "../../../assets/dice2.png";
-import dice3 from "../../../assets/dice3.png";
-import dice4 from "../../../assets/dice4.png";
-import dice5 from "../../../assets/dice5.png";
-import dice6 from "../../../assets/dice6.png";
+import dice0 from "../../../assets/dice/dice0.png";
+import dice1 from "../../../assets/dice/dice1.png";
+import dice2 from "../../../assets/dice/dice2.png";
+import dice3 from "../../../assets/dice/dice3.png";
+import dice4 from "../../../assets/dice/dice4.png";
+import dice5 from "../../../assets/dice/dice5.png";
+import dice6 from "../../../assets/dice/dice6.png";
 
 const Wrapper = styled.div`
   width: 400px;
